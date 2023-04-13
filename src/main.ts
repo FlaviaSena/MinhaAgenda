@@ -11,7 +11,9 @@ import { provideFirebaseApp, initializeApp} from '@angular/fire/app';
 import { getFirestore, provideFirestore} from '@angular/fire/firestore';
 
 if (environment.production) {
-  enableProdMode();
+  enableProdMode(
+    
+  );
 }
 
 bootstrapApplication(AppComponent, {
