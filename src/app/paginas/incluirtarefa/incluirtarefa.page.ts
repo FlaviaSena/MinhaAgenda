@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule,NavController } from '@ionic/angular';
-import { ContatoService } from 'src/app/servicos/contato.service';
+
+import { TarefaService } from 'src/app/servicos/tarefa.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ContatoService } from 'src/app/servicos/contato.service';
 export class IncluirtarefaPage implements OnInit {
   tarefa: any;
 
-  constructor(private service: ContatoService, private nav: NavController) {
+  constructor(private service: TarefaService, private nav: NavController) {
     this.tarefa = {'nome': '',
   'tipo':'',
   'descricao':''
