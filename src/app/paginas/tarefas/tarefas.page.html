@@ -13,11 +13,11 @@
 
 
   
-  <ion-card *ngFor= "let d of tarefas">
+  <ion-card *ngFor= "let d of t">
     <ion-card-title>{{d.nome}}</ion-card-title>
     <ion-card-subtitle>{{d.tipo}}</ion-card-subtitle>
   <ion-card-content>
-    {{c.descricao}}
+    {{d.descricao}}
   </ion-card-content>
   </ion-card>
 </ion-content>
