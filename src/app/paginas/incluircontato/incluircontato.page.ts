@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 import { ContatoService } from 'src/app/servicos/contato.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class IncluircontatoPage implements OnInit {
     
    contato: any;
 
-  constructor(private service: ContatoService) {
+  constructor(private service: ContatoService, private nav: NavController) {
 this.contato = {'nome': '',
   'email':'',
   'telefone':''
@@ -25,5 +25,7 @@ this.contato = {'nome': '',
   }
   incluir(){
     this.service.cadastrar(this.contato);
+    this.nav.navigateForward("contatos");
+    
   }
 }
