@@ -1,0 +1,31 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tarefas</ion-title>
+    <ion-buttons slot = "end">
+    <ion-button (click)="novo()">
+      <ion-icon name= "add-circle-outline"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tarefas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-card *ngFor= "let d of t">
+    <ion-card-title>{{d.descricao}}</ion-card-title>
+    <ion-card-subtitle>{{d.nome}}</ion-card-subtitle>
+    <ion-card-subtitle>{{d.tipo}}</ion-card-subtitle>
+    
+  <ion-card-content>
+    <ion-button (click)="iniciarEdicao(d.id)">Alterar</ion-button>
+    <ion-button>Excluir</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
