@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-interno',
+  templateUrl: './interno.page.html',
+  styleUrls: ['./interno.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class LoginPage implements OnInit {
+export class InternoPage implements OnInit {
 
   constructor() { }
 
