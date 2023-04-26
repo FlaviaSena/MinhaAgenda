@@ -9,6 +9,8 @@ import { environment } from './environments/environment';
 
 import { provideFirebaseApp, initializeApp} from '@angular/fire/app';
 import { getFirestore, provideFirestore} from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
 
 if (environment.production) {
   enableProdMode(
@@ -21,7 +23,8 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()) 
+    provideFirestore(() => getFirestore()),
+    provideAuth(() =>  getAuth())
     ),
     provideRouter(routes),
   ],
