@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import {  FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IonicModule, NavController } from '@ionic/angular';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,ReactiveFormsModule]
 })
 export class RegistroPage implements OnInit {
-  credencial?:FormGroup;
-  constructor( private service: AutenticacaoService, private fb: FormBuilder) { }
+  credencial!:FormGroup;
+  constructor( private service: AutenticacaoService, private fb: FormBuilder,private nav: NavController) { }
 
   ngOnInit() {
     this.credencial = this.fb.group({
@@ -23,10 +23,12 @@ export class RegistroPage implements OnInit {
   }
 
 
-registrar(){
-  const user = this.service.registrar(this.credencial?.get('nome'), this.credencial?.get('senha'));
+async registrar(){
+  const user = await this.service.registrar(this.credencial?.get('nome'), this.credencial?.get('senha'));
   if(user){
-
+    this.nav.navigateForward("interno");
+  } else{
+    console.log("Erro");
   }
 }
 
