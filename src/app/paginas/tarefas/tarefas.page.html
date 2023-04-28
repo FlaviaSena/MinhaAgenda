@@ -6,7 +6,6 @@
   <ion-toolbar>
     <ion-title>tarefas</ion-title>
   </ion-toolbar>
-
   <ion-buttons slot = "end">
     <ion-button (click)="novo()">
       <ion-icon name= "add-circle-outline"></ion-icon>
@@ -32,7 +31,7 @@
 
   <ion-card-content>
     <ion-button (click)="iniciarEdicao(d.id)">Alterar</ion-button>
-    <ion-button>Excluir</ion-button>
+    <ion-button (click)="excluir(d.id)">Excluir</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule, NavController } from '@ionic/angular';
-import { ContatoService } from 'src/app/servicos/contato.service';
-import { ActivatedRoute } from '@angular/router';
+import { AlertController, IonicModule, NavController } from '@ionic/angular';
 import { Tarefa, TarefaService } from 'src/app/servicos/tarefa.service';
 
 @Component({
@@ -17,7 +15,7 @@ export class TarefasPage implements OnInit {
   t: Tarefa[]=[];
 
   constructor(private service:TarefaService, 
-              private nav: NavController) { }
+              private nav: NavController, private alerta: AlertController) { }
 
   ngOnInit() {
 
@@ -34,5 +32,20 @@ novo(){
   iniciarEdicao(id: any){
     this.nav.navigateForward(["incluirtarefa", {idtarefa: id}]);
   }
-
+  async excluir(id:any){
+    const mensagem = await this.alerta.create({
+      header: "Excluir tarefa",
+      message: "Deseja realmente excluir essa tarefa?",
+      buttons:[
+        {text: "Sim",
+         handler: res => {
+          this.service.excluir(id);
+         } 
+        },
+        {text: "Não"}
+      ]
+    });
+    await mensagem.present();
+//    this.service.excluir(id);
+  }
 }

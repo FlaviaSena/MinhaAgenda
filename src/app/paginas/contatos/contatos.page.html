@@ -11,6 +11,8 @@
     </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -20,6 +22,7 @@
     </ion-toolbar>
   </ion-header>
 
+  
 
   <ion-card *ngFor= "let c of contatos">
     <ion-card-title>{{c.nome}}</ion-card-title>
@@ -28,7 +31,7 @@
     
   <ion-card-content>
     <ion-button (click)="iniciarEdicao(c.id)">Alterar</ion-button>
-    <ion-button>Excluir</ion-button>
+    <ion-button (click)="excluir(c.id)">Excluir</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

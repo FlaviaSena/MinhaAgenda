@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collection, collectionData, Firestore, docData } from '@angular/fire/firestore';
-import { addDoc, doc, updateDoc } from 'firebase/firestore';
+import { addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -37,6 +37,12 @@ export class TarefaService {
     return updateDoc(tarefa, { 
       nome: obj.nome, tipo: obj.tipo, descricao:obj.descricao
     });
+
+  } 
+  
+  excluir(id: any){
+    const tarefa = doc(this.firestore, this.colecao +'/' +id);
+    return deleteDoc(tarefa);
 
   } 
 }

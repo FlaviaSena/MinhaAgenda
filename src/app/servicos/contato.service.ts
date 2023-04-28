@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collection, collectionData, docData, Firestore } from '@angular/fire/firestore';
-import { addDoc,doc, updateDoc } from 'firebase/firestore';
+import { addDoc,doc, updateDoc,deleteDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 export interface Contato{
@@ -36,6 +36,11 @@ export class ContatoService {
     return updateDoc(contato, { 
       nome: obj.nome, email: obj.email, telefone:obj.telefone
     });
+
+  } 
+  excluir(id: any){
+    const contato = doc(this.firestore, this.colecao +'/' +id);
+    return deleteDoc(contato);
 
   } 
 }
