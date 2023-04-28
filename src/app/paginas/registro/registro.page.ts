@@ -24,7 +24,7 @@ export class RegistroPage implements OnInit {
 
 
 async registrar(){
-  const user = await this.service.registrar(this.credencial?.get('nome'), this.credencial?.get('senha'));
+  const user = await this.service.registrar(this.credencial?.get('email'), this.credencial?.get('senha'));
   if(user){
     this.nav.navigateForward("interno");
   } else{
