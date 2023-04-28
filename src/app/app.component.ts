@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 
 
 
@@ -12,5 +12,17 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private nav: NavController) {}
+
+  irParaContatos(){
+    this.nav.navigateForward("contatos");
+  }
+
+  irParaTarefas(){
+    this.nav.navigateForward("tarefas");
+  }
+
+  sair(){
+
+  }
 }

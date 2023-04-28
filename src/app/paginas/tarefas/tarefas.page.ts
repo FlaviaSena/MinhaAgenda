@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
+import { ContatoService } from 'src/app/servicos/contato.service';
+import { ActivatedRoute } from '@angular/router';
 import { Tarefa, TarefaService } from 'src/app/servicos/tarefa.service';
 
 @Component({
@@ -14,7 +16,8 @@ import { Tarefa, TarefaService } from 'src/app/servicos/tarefa.service';
 export class TarefasPage implements OnInit {
   t: Tarefa[]=[];
 
-  constructor(private service:TarefaService) { }
+  constructor(private service:TarefaService, 
+              private nav: NavController) { }
 
   ngOnInit() {
 
@@ -24,4 +27,12 @@ export class TarefasPage implements OnInit {
   });
 
 }
+
+novo(){
+  this.nav.navigateForward("incluirtarefa");
+}
+  iniciarEdicao(id: any){
+    this.nav.navigateForward(["incluirtarefa", {idtarefa: id}]);
+  }
+
 }

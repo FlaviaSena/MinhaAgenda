@@ -1,7 +1,18 @@
 <ion-header [translucent]="true">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
   <ion-toolbar>
     <ion-title>tarefas</ion-title>
   </ion-toolbar>
+
+  <ion-buttons slot = "end">
+    <ion-button (click)="novo()">
+      <ion-icon name= "add-circle-outline"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -16,8 +27,12 @@
   <ion-card *ngFor= "let d of t">
     <ion-card-title>{{d.nome}}</ion-card-title>
     <ion-card-subtitle>{{d.tipo}}</ion-card-subtitle>
+  <ion-card-content>{{d.descricao}} </ion-card-content>
+  
+
   <ion-card-content>
-    {{d.descricao}}
-  </ion-card-content>
+    <ion-button (click)="iniciarEdicao(d.id)">Alterar</ion-button>
+    <ion-button>Excluir</ion-button>
+    </ion-card-content>
   </ion-card>
 </ion-content>

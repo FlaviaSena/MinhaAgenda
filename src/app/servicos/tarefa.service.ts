@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc } from 'firebase/firestore';
+import { collection, collectionData, Firestore, docData } from '@angular/fire/firestore';
+import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -27,4 +27,18 @@ export class TarefaService {
     const t = collection(this.firestore, this.colecao);
       return collectionData (t, {idField:'id'}) as Observable<Tarefa[]>;
   }
+  buscar(id:any):Observable<Tarefa>{
+    const tarefa = doc(this.firestore, this.colecao +'/' +id);
+
+    return docData(tarefa, {idField: 'id'}) as Observable<Tarefa>
+  }
+  alterar(obj: any){
+    const tarefa = doc(this.firestore, this.colecao +'/' +obj.id);
+    return updateDoc(tarefa, { 
+      nome: obj.nome, tipo: obj.tipo, descricao:obj.descricao
+    });
+
+  } 
 }
+
+
